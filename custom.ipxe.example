@@ -2,21 +2,25 @@
 ###
 ### netboot.xyz-custom menu example
 ###
-
+set githhub_user Stulperolf
 :custom
 clear custom_choice
-menu This is a Test Menu
-item --gap This is the first sub menu
+menu Stulperolfs custom XyZ-ipxe-Menu
+#
+item --gap ipxe-tooLZ
 item option_one ${space} Loading a kernel and initrd
-item option_two ${space} Loading an ISO
-item --gap This is a second sub menu
-item option_three ${space} Loads another custom sub menu
+item option_two ${space} strel.iso from 192.168.0.5/iso/ or from http://netboot.myds.me/iso/
+#
+#item option_three ${space} Loads another custom sub menu
+#
+item --gap webBoot from official Mirrors
+
 item option_four ${space} This is option four
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
-
+#
 :option_one
 kernel http://path.to/vmlinuz
 initrd http://path.to/initrd
@@ -24,13 +28,13 @@ imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
+kernel http://boot.netboot.xyz/memdisk raw iso
+initrd http://192.168.0.5/iso/strel.iso || initrd http://netboot.myds.me/iso/strel.iso
 boot || goto custom_exit
 
-:option_three
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
+#:option_three
+#echo Chains into another menu...
+#chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
 
 :custom_exit
 chain utils.ipxe
