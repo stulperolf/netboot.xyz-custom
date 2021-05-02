@@ -2,7 +2,7 @@
 ###
 ### netboot.xyz-custom menu example
 ###
-set githhub_user Stulperolf
+set githhub_user stulperolf
 :custom
 clear custom_choice
 menu Stulperolfs custom XyZ-ipxe-Menu
